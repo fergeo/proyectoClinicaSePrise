@@ -23,7 +23,7 @@
 
 .label-input{
     display: inline-block;
-    width: 150px;
+    width: 200px;
     font-size: 25px;
     justify-items: flex-end;
 }
@@ -67,7 +67,7 @@ input{
     margin-right: 100px;
 }
 
-.btn-modificar{
+.button-modificar{
     display: none;
 }
 

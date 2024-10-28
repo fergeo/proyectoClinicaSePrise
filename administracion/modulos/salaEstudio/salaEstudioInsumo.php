@@ -17,7 +17,7 @@
         }
     ?>
 
-    <title>Consultorio-Insumos</title>
+    <title>Sala de Estudios-Insumos</title>
 </head>
 <body>
 
@@ -27,35 +27,31 @@
 
         require("../../../inc/conexion.php");
         
-        $consulta = "select distinct * from consultorioInsumo";
+        $consulta = "select distinct * from salaEstudioInsumo";
         $resultado = mysqli_query($conexion,$consulta);
 
+        $idSalaEstudio = $_GET['idSalaEstudio'];
+
+        $consulta0 = "select distinct salaEstudioNombre from salaestudio where idsalaEstudio = $idSalaEstudio";
+        $resultado0 = mysqli_query($conexion,$consulta0);
+        $salaEstudio0 = mysqli_fetch_array($resultado0);
+        $salaEstudio= $salaEstudio0[0];
         
-        //if (isset($_GET['idConsultorio'])) {
-            $idConsultorio = $_GET['idConsultorio'];
-
-            $consulta0 = "select distinct consultorioNombre from consultorio where idConsultorio = $idConsultorio";
-            $resultado0 = mysqli_query($conexion,$consulta0);
-            $consultorio0 = mysqli_fetch_array($resultado0);
-            $consultirio = $consultorio0[0];
-
-        //}
-
     ?>
 
     <main class="modulos">
 
         <div class="titulo-insumo">
-            <p class="titulo-insumo-text">Insumo para Consultorios</p>
+            <p class="titulo-insumo-text">Insumo para Salas de Estudios</p>
         </div>    
 
-        <form action="alta_consultorioInsumo_sql.php" method="post" class="formulario-insumo">
+        <form action="alta_salaEstudioInsumo_sql.php" method="post" class="formulario-insumo">
             <div class="inputs">
-                <label for="consultorio" class="label-input">Insumo:</label>
+                <label for="salaEstudio" class="label-input">Insumo:</label>
             
                 <?php
                     
-                    echo "<input style='display:none;' name='idConsultorio' value='$idConsultorio'>";
+                    echo "<input style='display:none;' name='idSalaEstudio' value='$idSalaEstudio'>";
                     
                     $consulta1 = "select distinct * from insumo";
                     $resultado1 = mysqli_query($conexion,$consulta1);
@@ -77,17 +73,17 @@
         <table class="tables-insumos">
             <thead class="table-headers">
                 <tr>
-                    <td style="visibility:collapse; display:none;"></td><td>Consultorio</td><td>Insumos</td><td>Acciones</td>
+                    <td style="visibility:collapse; display:none;"></td><td>Sala de Estudios</td><td>Insumos</td><td>Acciones</td>
                 </tr>
             </thead>
             <tbody class="table-success">
-                <?php
-                    $consulta2 = "select distinct * from consultorioInsumo where idConsultorio = $idConsultorio";
+                <?php 
+                    $consulta2 = "select distinct * from salaestudioinsumo where idsalaEstudio = $idSalaEstudio";
                     $resultado2 = mysqli_query($conexion,$consulta2);
 
                     while($fila=mysqli_fetch_array($resultado2)){
                         echo "<tr>";
-                        echo '<td  id="Consultorio">'.$consultirio."</td>";
+                        echo '<td  id="salaEstudio">'.$salaEstudio."</td>";
 
                         $consulta1 = "select distinct * from insumo";
                         $resultado1 = mysqli_query($conexion,$consulta1);
@@ -100,7 +96,7 @@
 
                         echo '<td  id="Consultorio">'.$insumo."</td>";
                         echo "<td>
-                                <a href='baja_consultorioInsumo_sql.php?idConsultorio=$idConsultorio&idInsumo=$idInsumo
+                                <a href='baja_consultorioInsumo_sql.php?idSalaEstudio=$idSalaEstudio&idInsumo=$idInsumo
                                     style='text-decoration:none'>
                                         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash3-fill' viewBox='0 0 16 16'>
                                             <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5'/>
@@ -113,8 +109,8 @@
             </tbody>
         </table>
 
-        <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/administracion/modulos/consultorio/consultorio.php">Volver</a></button>
+        <div class="volver">                                                                                                          
+            <button class="btn-volver"> <a href="http://localhost/proyectoClinicaSePrise/administracion/modulos/salaEstudio/salaestudio.php">Volver</a></button>
         </div>
 
     </main>

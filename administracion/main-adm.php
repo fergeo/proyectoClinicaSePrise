@@ -23,7 +23,7 @@
         <div class="botones-modulos">
             <button id="insumo"><a href="modulos/insumo/insumo.php">Gestionar Insumo</a></button>
             <button id="consultorio"><a href="modulos/consultorio/consultorio.php">Gestionar Consultorio</a></button>
-            <button id="salaEstudio"><a href="modulos/salaEspera/salaEspera.php">Gestionar Sala de Esudio</a></button>
+            <button id="salaEstudio"><a href="modulos/salaEstudio/salaestudio.php">Gestionar Sala de Esudio</a></button>
             <button id="especialista"><a href="modulos/especialista/especialista.php">Gestionar Especialista</a></button>
             <button id="turno"><a href="modulos/turno/turno.php">Gestionar Turno</a></button>
         </div>
