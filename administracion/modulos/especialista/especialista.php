@@ -15,6 +15,8 @@
         if(isset($_GET['mensaje'])){
             if($_GET['mensaje']=='uno'){$mensaje = 'El especialista ya existe en la base';}
         }
+
+        $espacios = "";
     ?>
 
     <title>Especialista</title>
@@ -37,7 +39,7 @@
             <p class="titulo-insumo-text">Espicialista</p>
         </div>    
 
-        <form action="alta_consultorio_sql.php" method="post" class="formulario-insumo">
+        <form action="alta_especialista_sql.php" method="post" class="formulario-insumo">
             <div class="inputs">
                 <label for="nombre" class="label-input">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre del Especialista" requiered>
@@ -51,70 +53,56 @@
                 <input type="text" id="matricula" name="matricula" placeholder="Matricula" requiered>
             </div>
 
-            <form method="post" action="procesar.php">
-                
+            <div class="inputs">
                 <label for="espacio" class="label-input">Consultorio o Sala de Estudios:</label>      
-                <select id="consultorioSalaEspacio" name="miSelconsultorioSalaEspacioect" onchange="actualizarInput()">
-                <?php
-                    $opciones = [
-                        "Consultorio" => "Consultorio",
-                        "Sala de Estudios" => "Sala de Estudios",
-
-                    ];
-
-                    foreach ($opciones as $key => $valor) {
-                        echo "<option value='$valor'>$key</option>";
-                    }
-                    ?>
+                <select id="consultorioSalaEspacio" name="consultorioSalaEspacio">
+                    <option value=''>Elija un valor</option>
+                    <option value='Consultorio'>Consultorio</option>
+                    <option value='Sala de Estudios'>Sala de Estudios</option>
                 </select>
-                <br><br>
 
                 <!-- Campo Input que se actualizará -->
-                <label for="miInput">Valor seleccionado:</label>
-                <input type="text" id="cosultorioSala" name="cosultorioSala" readonly>
-        
-        <br><br>
-        <input type="submit" value="Enviar">
-    </form>
+                <input type="text" id="consultorioSala" name="consultorioSala">
 
-
-
-            <div class="inputs">
                 
-
-
-
                 <?php
-                    $consultorioSala = "";
-
-                    echo "<input name='cosultorioSala' id='cosultorioSala'  value='$consultorioSala'>";
-
-                    if($consultorioSala == "Consultorio"){
+                    
+                    if($espacios == "Consultorio"){
                         $consulta1 = "select distinct (idConsultorio) as idEspacio, consultorioNombre as nombreEspacio from consultorio";
                         $resultadoEspacio = mysqli_query($conexion,$consulta1);
                     }
-                    else{
+                    else if($espacios == "Sala de Estudios"){
                         $consulta1 = "select distinct (idsalaestudio) as idEspacio, salaEstudioNombre as nombreEspacio from salaEstudio";
                         $resultadoEspacio = mysqli_query($conexion,$consulta1);
                     }
-
-                    echo "<select name='espacioEspecialista' id='espacioEspecialista'>";
+                        
+                    echo '<select name="espacioEspecialista" id="espacioEspecialista">';
                     while($fila=mysqli_fetch_array($resultadoEspacio)){
-                        echo "<option name='idInsumo' value=".$fila['idEspacio'].">".$fila['nombreEspacio']."</option>";
+                        echo "<option name='idEspacio' value=".$fila['idEspacio'].">".$fila['nombreEspacio']."</option>";
                     }
-                    echo "</select>";
+                    echo '</select>';
+                    
                 ?>
-                
-                
+                <br><br>
             </div>
-
+            
 
             <div class="botones">
-                <button button type="submit" class="btn-add">Agregar</button>
-                <button button type="submit" class="btn-add btn-modificar" class="button-modificar">Modificar</button>
+                <button type="submit" class="btn-add">Agregar</button>
+                <button type="submit" class="btn-add btn-modificar" class="button-modificar">Modificar</button>
             </div>
             <?php echo $mensaje; ?>   
         </form>
+
+
+
+
+            
+
+
+
+        
+
 
         <table class="tables-insumos">
             <thead class="table-headers">

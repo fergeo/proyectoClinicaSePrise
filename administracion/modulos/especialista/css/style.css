@@ -39,6 +39,17 @@ input{
     margin-bottom: 20px;
 }
 
+select{
+    width: 200px;
+    height: 35px;
+    border-radius: 5px;
+    border-width: 3px;
+    border-color: blue;
+    text-align: start;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
 #insumo{
     width: 500px;
     height: 40px;
