@@ -9,6 +9,8 @@
 
     <?php
         require("../../../inc/conexion.php");
+        require_once("carga-json.php");
+        
         
         // Sección mensaje.
         $mensaje = 'Ingrese los datos';
@@ -28,9 +30,6 @@
         cabecera();
 
         require("../../../inc/conexion.php");
-        
-        $consulta = "select distinct * from especialista";
-        $resultado = mysqli_query($conexion,$consulta);
     ?>
 
     <main class="modulos">
@@ -39,7 +38,7 @@
             <p class="titulo-insumo-text">Espicialista</p>
         </div>    
 
-        <form action="alta_especialista_sql.php" method="post" class="formulario-insumo">
+        <div class="pseudo-form">
             <div class="inputs">
                 <label for="nombre" class="label-input">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre del Especialista" requiered>
@@ -54,55 +53,35 @@
             </div>
 
             <div class="inputs">
-                <label for="espacio" class="label-input">Consultorio o Sala de Estudios:</label>      
+                <label for="consultorioSalaEspacio" class="label-input">Consultorio o Sala de Estudios:</label>      
                 <select id="consultorioSalaEspacio" name="consultorioSalaEspacio">
                     <option value=''>Elija un valor</option>
                     <option value='Consultorio'>Consultorio</option>
                     <option value='Sala de Estudios'>Sala de Estudios</option>
                 </select>
-
-                <!-- Campo Input que se actualizará -->
-                <input type="text" id="consultorioSala" name="consultorioSala">
-
-                
-                <?php
-                    
-                    if($espacios == "Consultorio"){
-                        $consulta1 = "select distinct (idConsultorio) as idEspacio, consultorioNombre as nombreEspacio from consultorio";
-                        $resultadoEspacio = mysqli_query($conexion,$consulta1);
-                    }
-                    else if($espacios == "Sala de Estudios"){
-                        $consulta1 = "select distinct (idsalaestudio) as idEspacio, salaEstudioNombre as nombreEspacio from salaEstudio";
-                        $resultadoEspacio = mysqli_query($conexion,$consulta1);
-                    }
-                        
-                    echo '<select name="espacioEspecialista" id="espacioEspecialista">';
-                    while($fila=mysqli_fetch_array($resultadoEspacio)){
-                        echo "<option name='idEspacio' value=".$fila['idEspacio'].">".$fila['nombreEspacio']."</option>";
-                    }
-                    echo '</select>';
-                    
-                ?>
-                <br><br>
             </div>
-            
 
+            <div class="inputs">
+                <label for="espacios" class="label-input">Espacio:</label>      
+                <select id="espacios" name="espacios">
+                </select>
+            </div>
+        </div>
+
+        <form action="alta_especialista_sql.php" method="post" class="formulario-insumo">
+
+        <input type="text" id="nombreAux" name="nombreAux" style="display:none;">
+        <input type="text" id="apellidoAux" name="apellidoAux" style="display:none;">
+        <input type="text" id="matriculaAux" name="matriculaAux" style="display:none;">
+        <input type="text" id="consultorioSalaAux" name="consultorioSalaAux" style="display:none;">
+        <input type="text" id="espacioAux" name="espacioAux" style="display:none;">
+            
             <div class="botones">
                 <button type="submit" class="btn-add">Agregar</button>
                 <button type="submit" class="btn-add btn-modificar" class="button-modificar">Modificar</button>
             </div>
             <?php echo $mensaje; ?>   
         </form>
-
-
-
-
-            
-
-
-
-        
-
 
         <table class="tables-insumos">
             <thead class="table-headers">
@@ -112,13 +91,30 @@
             </thead>
             <tbody class="table-success">
                 <?php
+                    $consulta = "select distinct * from especialista";
+                    $resultado = mysqli_query($conexion,$consulta);
                     while($fila=mysqli_fetch_array($resultado)){
                         echo "<tr>";
                         echo '<td style="visibility:collapse; display:none;" id="idEspecialista">'.$fila['idEspecialista']."</td>";
-                        echo '<td  id="nombreEspecialista">'.$fila['nombreEspecialista']."</td>";
-                        echo '<td  id="apellidoEspecialista">'.$fila['apellidoEspecialista']."</td>";
-                        echo '<td  id="consultorioSala">'.$fila['consultorioSalaEsutio']."</td>";
-                        echo '<td  id="espacioEspecialista">'.$fila['espacioEspecialista']."</td>";
+                        echo '<td id="nombreEspecialista">'.$fila['nombreEspecialista']."</td>";
+                        echo '<td id="apellidoEspecialista">'.$fila['apellidoEspecialista']."</td>";
+                        echo '<td id="matriculaEspecialista">'.$fila['matriculaEspecialista']."</td>";
+                        echo '<td id="consultorioSala">'.$fila['consultorioSalaEstudio']."</td>";
+
+                        if($fila['consultorioSalaEstudio'] == "Consultorio"){
+                            $idConsultorio = $fila['espacioEspecialista'];
+                            $consultaC = "select distinct consultorioNombre from consultorio where idConsultorio = $idConsultorio";
+                            $resultadoC = mysqli_query($conexion,$consultaC);
+                            $espacioEsp = mysqli_fetch_array($resultadoC);
+                        }
+                        else if($fila['consultorioSalaEstudio'] == "Sala de Estudios"){
+                            $idSalaEstudio = $fila['espacioEspecialista'];
+                            $consultaSE = "select distinct salaEstudioNombre from salaEstudio where idSalaEstudio = $idSalaEstudio";
+                            $resultadoSE = mysqli_query($conexion,$consultaSE);
+                            $espacioEsp = mysqli_fetch_array($resultadoSE);
+                        }
+                            
+                        echo '<td id="espacioEspecialista">'.$espacioEsp[0]."</td>";
                         
                         echo "<td>
                                 <a id='modificar'>

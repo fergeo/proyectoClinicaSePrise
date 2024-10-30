@@ -7,6 +7,13 @@
     text-align: center;
 }
 
+
+.pseudo-form{
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+
 .titulo-insumo-text{
     margin-top: 0px;
     margin-bottom: 0px;
@@ -40,7 +47,7 @@ input{
 }
 
 select{
-    width: 200px;
+    width: 250px;
     height: 35px;
     border-radius: 5px;
     border-width: 3px;

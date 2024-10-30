@@ -3,11 +3,10 @@
     include('../../../inc/conexion.php');
 
     // Busco los datos en el POST
-    $idConsultorio = $_GET['idConsultorio'];
+    $idEspecialista = $_GET['idEspecialista'];
 
     // Hacemos la baja del registro
-    $baja = "delete from consultorio where idConsultorio = '$idConsultorio'";
+    $baja = "delete from especialista where idEspecialista = '$idEspecialista'";
     $resultado_baja = mysqli_query($conexion,$baja);
-    header("Location:consultorio.php");
-
+    header("Location:especialista.php");
 ?>
