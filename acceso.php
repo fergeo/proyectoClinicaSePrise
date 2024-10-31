@@ -15,19 +15,31 @@
         $existe = $a['nuevo'];
     }
 
-    echo "<script>alert('enetro valor $existe $perfil');</script>";
+    //echo "<script>alert('enetro valor $existe $perfil');</script>";
 
     // Estructura de decisión
     if($existe==1){
-        echo "<script>alert('entro');</script>";
+        echo "<script>alert('entrodd');</script>";
+
+        if($perfil == "Paciente"){
+            echo "<script>alert('entro1');</script>";
+            header("Location:http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php");
+        }
 
         if($perfil == "Administrador")
             header("Location:http://localhost/proyectoClinicaSePrise/administracion/main-adm.php");
+        else if($perfil == "Paciente"){
+            echo "<script>alert('entro1');</script>";
+            header("Location:http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php");
+        }
+        else{
+            header("Location:http://localhost/proyectoClinicaSePrise?");
+        }
+            
         
     }
     else{
-        echo "<script>alert('else');</script>";
-        
+        header("Location:http://localhost/proyectoClinicaSePrise?");
     }   
 
 ?>
