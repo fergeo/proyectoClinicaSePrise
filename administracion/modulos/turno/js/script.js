@@ -1,122 +1,75 @@
-//botón "ir arriba" (togo-top-button)
-var btn = $('#goto-top-button');
-$(window).scroll(function() {
-    if ($(window).scrollTop() > 300) {
-        btn.addClass('show');
-    } else {
-        btn.removeClass('show');
-    }
-});
-btn.on('click', function(e) {
-    e.preventDefault();
-    $('html, body').animate({scrollTop:0}, '300');
-});
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Función para actualizar el calendario
-    function updateCalendar() {
-        const monthSelect = document.getElementById("calendar__month");
-        const yearSelect = document.getElementById("calendar__year");
-        const datesContainer = document.querySelector(".calendar__dates");
-
-        // Obtiene el mes y año seleccionados
-        const month = monthSelect.selectedIndex;
-        const year = parseInt(yearSelect.value, 10);
-
-        // Obtiene la fecha actual
-        const today = new Date();
-        const currentDay = today.getDate();
-        const currentMonth = today.getMonth();
-        const currentYear = today.getFullYear();
-
-        // Calcula el primer día del mes
-        const firstDay = new Date(year, month, 1).getDay();
-
-        // Calcula el número total de días en el mes
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-        // Limpia los días previos
-        datesContainer.innerHTML = '';
-
-        // Ajusta el inicio según el primer día del mes
-        for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
-            const emptyCell = document.createElement("div");
-            emptyCell.className = "calendar__date calendar__date--grey";
-            datesContainer.appendChild(emptyCell);
+var actual=new Date();
+function mostrarCalendario(year,month)
+{
+    var now=new Date(year,month-1,1);
+    var last=new Date(year,month,0);
+    var primerDiaSemana=(now.getDay()==0)?7:now.getDay();
+    var ultimoDiaMes=last.getDate();
+    var dia=0;
+    var resultado="<tr bgcolor='silver'>";
+    var diaActual=0;
+    console.log(ultimoDiaMes);
+    var last_cell=primerDiaSemana+ultimoDiaMes;
+    // hacemos un bucle hasta 42 
+    //de  6 columnas y de 7 días
+    for(var i=1;i<=42;i++)
+    {
+        if(i==primerDiaSemana)
+        {
+            // determinamos en que día empieza
+            dia=1;
         }
-
-        // Llena los días del mes
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dateCell = document.createElement("div");
-            dateCell.className = "calendar__date";
-            dateCell.innerHTML = `<span>${day}</span>`;
-            if (day === currentDay && month === currentMonth && year === currentYear) {
-                dateCell.classList.add("calendar__date--range-start");
-            }
-            datesContainer.appendChild(dateCell);
+        if(i<primerDiaSemana || i>=last_cell)
+        {
+            // celda vacía
+            resultado+="<td>&nbsp;</td>";
+        }else{
+            // mostramos el día
+            mesActual = actual.getMonth() + 1;
+            fecha = "<a href='diaturno.php?fecha="+dia+"/"+ mesActual + "/" + actual.getFullYear() + "'>" + dia + "</a>";
+            if(dia==actual.getDate() && month==actual.getMonth()+1 && year==actual.getFullYear())
+                resultado+="<td class='hoy'>"+ fecha +"</td>";
+            else
+                resultado+="<td>"+ fecha +"</td>";
+            dia++;
+        }
+        if(i%7==0)
+        {
+            if(dia>ultimoDiaMes)
+                break;
+            resultado+="</tr><tr>\n";
         }
     }
+    resultado+="</tr>";
 
-    // Añade eventos a los selects para actualizar el calendario
-    document.getElementById("calendar__month").addEventListener("change", updateCalendar);
-    document.getElementById("calendar__year").addEventListener("change", updateCalendar);
-    // Actualiza el calendario inicialmente
-    updateCalendar();
+    var meses=Array("Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre","Diciembre");
 
-    let selectedDay = null; // Almacena el día seleccionado
+    // Calculamos el siguiente mes y año
+    nextMonth=month+1;
+    nextYear=year;
 
-    // Abre el modal para agregar o modificar un evento
-    document.querySelectorAll(".calendar__date:not(.calendar__date--grey)").forEach(day => {
-        day.addEventListener("click", function() {
-            document.getElementById("eventModal").style.display = "block";
-            selectedDay = this;
+    if(month+1>12)
+    {
+        nextMonth=1;
+        nextYear=year+1;
+    }
 
-            // Verifica si el día seleccionado ya tiene un evento asignado
-            if (selectedDay.getAttribute('data-event-name')) {
-                document.getElementById("eventName").value = selectedDay.getAttribute('data-event-name');
-                document.getElementById("saveEventButton").style.display = "none";
-                document.getElementById("modifyEventButton").style.display = "inline";
-                document.getElementById("cancelEventButton").style.display = "inline";
-            } else {
-                document.getElementById("eventName").value = '';
-                document.getElementById("saveEventButton").style.display = "inline";
-                document.getElementById("modifyEventButton").style.display = "none";
-                document.getElementById("cancelEventButton").style.display = "none";
-            }
-        });
-    });
+    // Calculamos el anterior mes y año
+    prevMonth=month-1;
+    prevYear=year;
 
-    // Cierra el modal
-    document.querySelector(".close-button").addEventListener("click", function() {
-        document.getElementById("eventModal").style.display = "none";
-    });
-    
-    // Guarda el nuevo evento
-    document.getElementById("saveEventButton").addEventListener("click", function() {
-        const eventName = document.getElementById("eventName").value;
-        if (eventName && selectedDay) {
-            selectedDay.classList.add("calendar__date--range-end");
-            selectedDay.setAttribute('data-event-name', eventName);
-            document.getElementById("eventModal").style.display = "none";
-        }
-    });
+    if(month-1<1)
+    {
+        prevMonth=12;
+        prevYear=year-1;
+    }
 
-    // Modifica el evento existente
-    document.getElementById("modifyEventButton").addEventListener("click", function() {
-        const eventName = document.getElementById("eventName").value;
-        if (eventName && selectedDay) {
-            selectedDay.setAttribute('data-event-name', eventName);
-            document.getElementById("eventModal").style.display = "none";
-        }
-    });
+    document.getElementById("calendar").getElementsByTagName("caption")[0].innerHTML = "<div>"+meses[month-1]+" / "+year+"</div><div><a onclick='mostrarCalendario("+prevYear+","+prevMonth+")'>&lt;</a><a onclick='mostrarCalendario("+nextYear+","+nextMonth+")'>&gt;</a></div>";
+    document.getElementById("calendar").getElementsByTagName("tbody")[0].innerHTML = resultado;
+}
 
-    // Cancela (elimina) el evento existente
-    document.getElementById("cancelEventButton").addEventListener("click", function() {
-        if (selectedDay) {
-            selectedDay.classList.remove("calendar__date--range-end");
-            selectedDay.removeAttribute('data-event-name');
-            document.getElementById("eventModal").style.display = "none";
-        }
-    });
-});
+mostrarCalendario(actual.getFullYear(),actual.getMonth()+1);
+
+
