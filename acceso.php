@@ -7,6 +7,10 @@
     $usuario = $_POST['usuario'];
     $passowrd = $_POST['password'];
 
+    session_start();
+    // Asigna un valor a una variable de sesión
+    $_SESSION['usuario'] = $_POST['usuario'];
+
      // Verificamos si existe el usuario.
     $consulta = "select count(distinct usuario) as nuevo from usuario where usuario = '$usuario' and password = '$passowrd' and perfil = '$perfil' ";
     $resultado = mysqli_query($conexion,$consulta);

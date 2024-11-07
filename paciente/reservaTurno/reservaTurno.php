@@ -12,7 +12,7 @@
         cabecera();
     ?>
 
-    <title>Panel Paciente</title>
+    <title>Reserva de Turno</title>
 </head>
 <body>
 
@@ -21,9 +21,9 @@
             <img class="administracion" src="./assets/administracion.jpg" alt="Administración">
         </div>
         <div class="botones-modulos">
-            <button class="btn-registrar"><a href="registro/regisro.php">Registrarse</a></button>
-            <button class="btn-historiaClinica"><a href="historiaClinica/historiaClinica.php">Consultar Historia Clinica</a></button>
-            <button class="btn-registrarReserva"><a href="reservaTurno/reservaTurno.php">Registrar Reserva de Turno</a></button>
+            <h1>Reserva de Turnos</h1>
+            <button class="btn-historiaClinica"><a href="elegirTurno.php?espacio=consultorio">Consultorios Externos</a></button>
+            <button class="btn-registrarReserva"><a href="elegirTurno.php?espacio=estudio">Estudios</a></button>
         </div>
     </main>
 

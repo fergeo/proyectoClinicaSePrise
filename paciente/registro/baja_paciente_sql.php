@@ -3,11 +3,11 @@
     include('../../inc/conexion.php');
 
     // Busco los datos en el POST
-    $idInsumo = $_GET['idInsumo'];
+    $idPaciente = $_GET['idPaciente'];
 
     // Hacemos la baja del registro
-    $baja = "delete from insumo where idInsumo = '$idInsumo'";
+    $baja = "delete from paciente where idPaciente = '$idPaciente'";
     $resultado_baja = mysqli_query($conexion,$baja);
-    header("Location:insumo.php");
+    header("Location:paciente.php");
 
 ?>

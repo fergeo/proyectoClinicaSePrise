@@ -13,6 +13,16 @@
     font-size: 60px;
 }
 
+.texto{
+    margin-top: 40px;
+    margin-left: 200px;
+    font-size: 20px;
+}
+
+.sutitle{
+    font-size: 35px;
+}
+
 .formulario-insumo{
     display: flex;
     flex-direction: column;
