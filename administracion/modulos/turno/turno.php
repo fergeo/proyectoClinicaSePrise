@@ -6,10 +6,6 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <?php
-        require("generaJSON.php");
-    ?>
     
     <title>Turnos</title>
 </head>

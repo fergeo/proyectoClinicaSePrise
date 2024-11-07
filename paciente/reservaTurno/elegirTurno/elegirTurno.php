@@ -6,9 +6,10 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/elegirTurno.css">
 
     <?php
-        require("generaJSON.php");
+        require("generarJSON.php");
     ?>
     
     <title>Turnos</title>
@@ -48,7 +49,7 @@
         </div>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/administracion/main-adm.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php">Volver</a></button> <br><br><br>
         </div>
 
     </main>

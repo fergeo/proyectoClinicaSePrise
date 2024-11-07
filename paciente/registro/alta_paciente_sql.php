@@ -10,6 +10,7 @@
     $domicilio = $_POST['domicilio'];
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
+    $poseeOS = $_POST['poseeOS'];
 
     // Verificamos si existe el usuario.
     $consulta1 = "select count(distinct nombrePaciente) as nuevo from paciente where numDocumentoPaciente = '$nroDoc' ";
@@ -22,13 +23,13 @@
     // Estructura de decisión
     if($existe==1){
         // Modifico el mensaje y volvemos al formulario
-        header("Location: paciente.php?mensaje=uno");
+        header("Location: registro.php?mensaje=uno");
     }else{
 
-        $alta = "insert into paciente values(NULL,'$nroDoc','$nombre','$apellido','$domicilio','$email','$telefono')";
+        $alta = "insert into paciente values(NULL,'$nroDoc','$nombre','$apellido','$domicilio','$email','$telefono','$poseeOS')";
         $resultado_alta = mysqli_query($conexion,$alta);
 
         // Redirigimos al usuario
-        header("Location: paciente.php");
+        header("Location: registro.php");
     }
 ?>

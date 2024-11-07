@@ -1,4 +1,27 @@
 
+function poseeTurno(dia,mes,anio){
+    fetch('http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/elegirTurno/dias.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar el JSON');
+            }
+            return response.json(); // Convertir la respuesta a JSON
+        })
+        .then(data => {
+        data.forEach(opcion => {
+            if(opcion.dia == dia && opcion.mes == mes && opcion.anio == anio ){
+                return opcion.dia
+            }
+            else{
+                return 'nada'
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 
 var actual=new Date();
 function mostrarCalendario(year,month)
@@ -28,7 +51,8 @@ function mostrarCalendario(year,month)
         }else{
             // mostramos el día
             mesActual = actual.getMonth() + 1;
-            fecha = "<a href='diaturno.php?fecha="+dia+"/"+ mesActual + "/" + actual.getFullYear() + "'>" + dia + "</a>";
+            //poseeTurno(dia,actual.getMonth()+1,actual.getFullYear())
+            fecha = "<a href='diaturno.php?fecha="+dia+"/"+ mesActual + "/" + actual.getFullYear() + "' >" + dia + "</a>";
             if(dia==actual.getDate() && month==actual.getMonth()+1 && year==actual.getFullYear())
                 resultado+="<td class='hoy'>"+ fecha +"</td>";
             else

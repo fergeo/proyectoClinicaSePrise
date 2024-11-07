@@ -22,9 +22,12 @@
         </div>
         <div class="botones-modulos">
             <h1>Reserva de Turnos</h1>
-            <button class="btn-historiaClinica"><a href="elegirTurno.php?espacio=consultorio">Consultorios Externos</a></button>
-            <button class="btn-registrarReserva"><a href="elegirTurno.php?espacio=estudio">Estudios</a></button>
+            <button class="btn-historiaClinica"><a href="elegirTurno/elegirTurno.php?espacio=consultorio">Consultorios Externos</a></button>
+            <button class="btn-registrarReserva"><a href="elegirTurno/elegirTurno.php?espacio=estudio">Estudios</a></button>
+            
+            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/reservaTurno.php">Voler</a></button>
         </div>
+        
     </main>
 
 </body>

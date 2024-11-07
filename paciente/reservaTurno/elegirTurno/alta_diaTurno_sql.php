@@ -7,7 +7,6 @@
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
     $idEspecialista = $_POST['idEspecialista'];
-    $costo = $_POST['costo'];
 
     //echo "<script>alert('alert')</script>";
     
@@ -26,7 +25,7 @@
     }else{
         
         // El usuario no existe, permitimos la carga.
-        $alta = "insert into turno values(NULL,'$fecha','$hora','$idEspecialista','$costo')";
+        $alta = "insert into turno values(NULL,'$fecha','$hora','$idEspecialista')";
         $resultado_alta = mysqli_query($conexion,$alta);
 
         // Redirigimos al usuario
