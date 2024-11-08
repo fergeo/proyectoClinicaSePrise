@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservaturno.css">
 
     <?php
         require("inc/cabecera.php");
@@ -21,11 +20,11 @@
             <img class="administracion" src="./assets/administracion.jpg" alt="Administración">
         </div>
         <div class="botones-modulos">
-            <h1>Reserva de Turnos</h1>
-            <button class="btn-historiaClinica"><a href="elegirTurno/elegirTurno.php?espacio=consultorio">Consultorios Externos</a></button>
-            <button class="btn-registrarReserva"><a href="elegirTurno/elegirTurno.php?espacio=estudio">Estudios</a></button>
+            <h1 class="title">Reserva de Turnos</h1>
+            <button class="btn-historiaClinica"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/consultorios/elegirTurno.php">Consultorios Externos</a></button>
+            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/estudios/elegirTurno.php">Estudios</a></button>
             
-            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/reservaTurno.php">Voler</a></button>
+            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php">Voler</a></button>
         </div>
         
     </main>

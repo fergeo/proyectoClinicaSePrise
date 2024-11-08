@@ -23,12 +23,8 @@
 </head>
 <body>
 
-
-
     <main class="contenedor-principal">
-        <h1 class="title">
-            Dia Turno
-        </h1>
+        <h1 class="title"> Reserva de Turno para Estudios </h1>
 
         <form  action="alta_diaTurno_sql.php" method="post" class="formulario-turnos">
             <div class="inputs">
@@ -155,7 +151,7 @@
         </table>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/administracion/modulos/turno/turno.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/estudios/elegirTurno.php">Volver</a></button> <br><br><br>
         </div>
     </main>
 

@@ -49,7 +49,7 @@
         </div>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/reservaTurno.php">Volver</a></button> <br><br><br>
         </div>
 
     </main>

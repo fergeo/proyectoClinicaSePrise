@@ -26,7 +26,7 @@
     }else{
         
         // El usuario no existe, permitimos la carga.
-        $alta = "insert into turno values(NULL,'$fecha','$hora','$idEspecialista','$costo')";
+        $alta = "insert into turno values(NULL,'$fecha','$hora','$idEspecialista','$costo','0')";
         $resultado_alta = mysqli_query($conexion,$alta);
 
         // Redirigimos al usuario

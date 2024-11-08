@@ -35,6 +35,7 @@ function mostrarCalendario(year,month)
     var diaActual=0;
     console.log(ultimoDiaMes);
     var last_cell=primerDiaSemana+ultimoDiaMes;
+
     // hacemos un bucle hasta 42 
     //de  6 columnas y de 7 días
     for(var i=1;i<=42;i++)

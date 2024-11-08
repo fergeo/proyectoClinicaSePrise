@@ -4,36 +4,33 @@
     require("../../../inc/conexion.php");
 
     // Tomo los datos del formulario
-    $idTurno = $_POST['idTurno'];
-    $costo = $_POST['costo'];
+    $idTurno = $_GET['idTurno'];
+    $costo = $_GET['costo'];
+    $fecha = $_GET['fecha'];
     
     session_start(); // Asegurarse de que la sesión esté iniciada
     // Verificar si la variable de sesión está definida
     if (isset($_SESSION['usuario'])) {
-        $nreoDNI = $_SESSION['usuario']; // Recuperar el valor de la sesión
-        echo "El valor de la sesión es: " . $valor;
+        $nroDNI = $_SESSION['usuario']; // Recuperar el valor de la sesión
 
         // Verificamos si existe el usuario.
-        $consulta1 = "select distinct idPaciente as idPaciente from paciente where diaTurno = '$fecha' and horaTurno = '$hora' and numDodcumentoPaciente = '$nroDNI' ";
+        $consulta1 = "select distinct idPaciente as idPaciente, poseeObraSocial from paciente where numDocumentoPaciente = '$nroDNI' ";
         $resultado1 = mysqli_query($conexion,$consulta1);
     
         while($a = mysqli_fetch_assoc($resultado1)){
             $idPaciente = $a['idPaciente'];
 
             if($a['poseeObraSocial'] == 1){
-                $montofinal = $costo * 1.2;
+                $montofinal = $costo - ($costo * 0.2);
             }
 
         }
 
-        // Estructura de decisión
-        if($existe==1){
-            // Modifico el mensaje y volvemos al formulario
-            header("Location: diaturno.php?mensaje=uno");
-        }
-        
+        $update = "update turno set estadoTurno = 1 where idTurno = '$idTurno'";
+        $resultado_update = mysqli_query($conexion,$update); 
+
         // El usuario no existe, permitimos la carga.
-        $alta = "insert into reservaturno values(NULL,'$idTurno','$idPaciente','$montofinal')";
+        $alta = "insert into reservaturno values(NULL,'$idTurno','$idPaciente','$montofinal','Ingresado')";
         $resultado_alta = mysqli_query($conexion,$alta);
     }
     else {
