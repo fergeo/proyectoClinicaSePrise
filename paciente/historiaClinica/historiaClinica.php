@@ -56,46 +56,116 @@
 
         <div class="consultorios">
             <h2 class="sutitle">Turnos en Consultorios</h2>
-            <table class="tables-insumos">
-                <thead class="table-headers">
-                    <tr>
-                        <td style="visibility:collapse; display:none;"></td>
-                        <td>Fecha</td>
-                        <td>Hora</td>
-                        <td>Especialista</td>
-                        <td>Area</td>
-                        <td>Consultorio</td>
-                        <td>Acciones</td>
-                </tr>
+            <table class="tables-turno">
+            <thead class="table-headers">
+            <tr>
+                <td style="visibility:collapse; display:none;"></td><td>Fecha</td><td>Hora</td><td>Especialista</td><td>Espacio</td><td>Costo</td><td>Estado</td>
+            </tr>
             </thead>
             <tbody class="table-success">
                 <?php
+                    $consultaT = "select distinct 
+                                idReservaTurno,
+                                t.idTurno as idTurno,
+                                diaTurno,
+                                horaTurno,
+                                nombreEspecialista,
+                                apellidoEspecialista,
+                                e.consultorioSalaEstudio as espascioConsultorioSala,
+                                consultorioNombre,
+                                montoFinal,
+                                estado
+                            from turno t,
+                                reservaturno r,
+                                paciente p,
+                                especialista e,
+                                consultorio c
+                            where (e.consultorioSalaEstudio = 'Consultorio' and espacioEspecialista = idConsultorio)
+                            and t.idEspecialista = e.idEspecialista
+                            and r.idTurno = t.idTurno
+                            and r.idPaciente = p.idPaciente
+                            and numDocumentoPaciente = '$usuario'";
+                    $resultadoT = mysqli_query($conexion,$consultaT);
+
+                    while($fila=mysqli_fetch_array($resultadoT)){
+                            echo "<tr>";
+                            echo '<td style="display:none;" id="idTurno">'.$fila['idTurno']."</td>";
+                            echo "<td>".$fila['diaTurno']."</td>";
+                            echo "<td>".$fila['horaTurno']."</td>";
+                            echo "<td>".$fila['nombreEspecialista']." ".$fila['apellidoEspecialista']."</td>";
+
+                            // Mostrar los datos
+                            if($fila['espascioConsultorioSala'] == 'Consultorio'){ 
+                                echo "<td>" . $fila['espascioConsultorioSala'] . " - " . $fila['consultorioNombre'] . "</td>"; 
+                            } 
+                            else {
+                                echo "<td>No se encontró el consultorio.</td>";
+                            }
+                    
+                            echo "<td>".$fila['montoFinal']."</td>";
+                            echo "<td>".$fila['estado']."</td>";
+                            echo "</tr>";
+                }
                 ?>
-                </tbody>
-            </table>
+            </tbody>
+        </table>
         </div>
 
         <div class="estudios">
             <h2 class="sutitle">Turnos para Estudios</h2>
-            <table class="table-estudios">
-                <thead class="table-headers">
-                    <tr>
-                        <td style="visibility:collapse; display:none;"></td>
-                        <td>Fecha</td>
-                        <td>Hora</td>
-                        <td>Especialista</td>
-                        <td>Area</td>
-                        <td>Estudio</td>
-                        <td>Acciones</td>
-                    </tr>
-                </thead>
-                
-                <tbody class="table-success">
-                    <?php
+            <table class="tables-turno">
+            <thead class="table-headers">
+            <tr>
+                <td style="visibility:collapse; display:none;"></td><td>Fecha</td><td>Hora</td><td>Especialista</td><td>Espacio</td><td>Costo</td><td>Estado</td>
+            </tr>
+            </thead>
+            <tbody class="table-success">
+                <?php
+                    $consultaT = "select distinct 
+                                idReservaTurno,
+                                t.idTurno as idTurno,
+                                diaTurno,
+                                horaTurno,
+                                nombreEspecialista,
+                                apellidoEspecialista,
+                                e.consultorioSalaEstudio as espascioConsultorioSala,
+                                salaEstudioNombre,
+                                montoFinal,
+                                estado
+                            from turno t,
+                                reservaturno r,
+                                paciente p,
+                                especialista e,
+                                salaestudio s
+                            where (e.consultorioSalaEstudio = 'Sala de Estudios' and espacioEspecialista = idSalaEstudio)
+                            and t.idEspecialista = e.idEspecialista
+                            and r.idTurno = t.idTurno
+                            and r.idPaciente = p.idPaciente
+                            and numDocumentoPaciente = '$usuario'";
+                    $resultadoT = mysqli_query($conexion,$consultaT);
+
+                    while($fila=mysqli_fetch_array($resultadoT)){
+                            echo "<tr>";
+                            echo '<td style="display:none;" id="idTurno">'.$fila['idTurno']."</td>";
+                            echo "<td>".$fila['diaTurno']."</td>";
+                            echo "<td>".$fila['horaTurno']."</td>";
+                            echo "<td>".$fila['nombreEspecialista']." ".$fila['apellidoEspecialista']."</td>";
+
+                            // Mostrar los datos
+                            if($fila['espascioConsultorioSala'] == 'Consultorio'){ 
+                                echo "<td>" . $fila['espascioConsultorioSala'] . " - " . $fila['consultorioNombre'] . "</td>"; 
+                            } 
+                            else {
+                                echo "<td>No se encontró el consultorio.</td>";
+                            }
                     
-                    ?>
-                </tbody>
-            </table>                    
+                            echo "<td>".$fila['montoFinal']."</td>";
+                            echo "<td>".$fila['estado']."</td>";
+                            echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
         </div>
 
         <div class="volver">

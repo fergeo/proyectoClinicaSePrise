@@ -18,7 +18,7 @@
 
     <main class="modulos">
         <div class="imagen-modulo">
-            <img class="administracion" src="./assets/administracion.jpg" alt="Administración">
+            <img class="administracion" src="./assets/menu-paciente.jpg" alt="Administración">
         </div>
         <div class="botones-modulos">
             <button class="btn-registrar"><a href="registro/regisro.php">Registrarse</a></button>

@@ -13,15 +13,15 @@
         //require("../../inc/cabecera.php");
         //cabecera();
 
-        $consulta = "select distinct * from paciente";
-        $resultado = mysqli_query($conexion,$consulta);
-
         session_start();
         // Verifica si la variable de sesión existe antes de usarla
         if (isset($_SESSION['usuario'])) {
         // Recupera y muestra el valor de la variable de sesión
             $usuario = $_SESSION['usuario'];
         }    
+
+        $consulta = "select distinct * from paciente where numDocumentoPaciente = $usuario";
+        $resultado = mysqli_query($conexion,$consulta);
         
         // Sección mensaje.
         $mensaje = 'Ingrese los datos';
@@ -40,6 +40,7 @@
             <p class="titulo-insumo-text">Paciente</p>
         </div>    
 
+        <!-- Ingreso de datos-->
         <form action="alta_paciente_sql.php" method="post" class="formulario-insumo">
             <div class="inputs">
                 <label for="nroDoc" class="label-input">Numero de Documento:</label>

@@ -25,16 +25,19 @@
     if($existe==1){
         echo "<script>alert('entrodd');</script>";
 
-        if($perfil == "Paciente"){
-            echo "<script>alert('entro1');</script>";
-            header("Location:http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php");
-        }
-
         if($perfil == "Administrador")
             header("Location:http://localhost/proyectoClinicaSePrise/administracion/main-adm.php");
         else if($perfil == "Paciente"){
             echo "<script>alert('entro1');</script>";
             header("Location:http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php");
+        }
+        else if($perfil == "Recepcionista"){
+            echo "<script>alert('entro1');</script>";
+            header("Location:http://localhost/proyectoClinicaSePrise/recepcionista/main-recepcionista.php");
+        }
+        else if($perfil == "Doctor"){
+            echo "<script>alert('entro1');</script>";
+            header("Location:http://localhost/proyectoClinicaSePrise/doctor/main-doctor.php");
         }
         else{
             header("Location:http://localhost/proyectoClinicaSePrise?");

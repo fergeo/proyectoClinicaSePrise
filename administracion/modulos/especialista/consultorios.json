@@ -10,5 +10,13 @@
     {
         "idConsultorio": "14",
         "nombreConsultorio": "Consultorio 3"
+    },
+    {
+        "idConsultorio": "15",
+        "nombreConsultorio": "Consultorio 2"
+    },
+    {
+        "idConsultorio": "16",
+        "nombreConsultorio": "Consultorio 4"
     }
 ]
