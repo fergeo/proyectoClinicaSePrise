@@ -3,7 +3,7 @@
     <header class="cabecera">
         <div class="logo">
             <img src="assets/logo.png" alt="Logo" class="logo-imagen">
-            <p class="administrador">Administración</p>
+            <p class="administrador">Doctor</p>
         </div>
         <div class="logout">
             <p class="logout-text"> <a href="http://localhost/proyectoClinicaSePrise/">Logout</a>  </p>

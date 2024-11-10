@@ -11,8 +11,7 @@
         require("../../../inc/conexion.php");
         
         // Sección mensaje.
-        //$fecha = date("d/m/Y");
-        $fecha = '12/11/2024';
+        $fecha = date("d/m/Y");
         
         $mensaje = 'Ingrese los datos';
         if(isset($_GET['mensaje'])){
@@ -80,8 +79,7 @@
                                         and r.idTurno = t.idTurno
                                         and r.idPaciente = p.idPaciente
                                         and estado = 'Ingresado'
-                                        and diaTurno = '$fecha'
-                                        and ('$dniPaciente' = 'TODOS' OR numDocumentoPaciente = '$dniPaciente')";
+                                        and diaTurno = '$fecha'";
 
                     //echo "<scrip>alert('$consultaT')</scrip>";                                        
                     $resultadoT = mysqli_query($conexion,$consultaT);

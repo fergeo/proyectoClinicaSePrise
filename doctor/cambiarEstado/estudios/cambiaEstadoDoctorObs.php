@@ -90,7 +90,7 @@
                                         and t.idEspecialista = e.idEspecialista
                                         and r.idTurno = t.idTurno
                                         and r.idPaciente = p.idPaciente
-                                        and estado = 'Ingresado'
+                                        and estado = 'En Espera'
                                         and diaTurno = '$fecha'
                                         and ('$dniPaciente' = 'TODOS' or numDocumentoPaciente = '$dniPaciente')";
 

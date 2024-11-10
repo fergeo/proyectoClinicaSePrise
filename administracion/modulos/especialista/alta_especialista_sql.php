@@ -14,7 +14,7 @@
         $espacio = $_POST['espacioAux'];
 
         // Verificamos si existe el usuario.
-        $consulta = "select count(distinct matriculaEspecialista) as nuevo from especialista where matriculaEspecialista = $matricula ";
+        $consulta = "select count(distinct matriculaEspecialista) as nuevo from especialista where matriculaEspecialista = '$matricula' ";
         $resultado = mysqli_query($conexion,$consulta);
     
         while($a = mysqli_fetch_assoc($resultado)){

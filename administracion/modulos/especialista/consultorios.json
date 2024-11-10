@@ -4,19 +4,11 @@
         "nombreConsultorio": "Elegir una opci\u00f3n"
     },
     {
-        "idConsultorio": "12",
+        "idConsultorio": "17",
         "nombreConsultorio": "Consultorio 1"
     },
     {
-        "idConsultorio": "14",
-        "nombreConsultorio": "Consultorio 3"
-    },
-    {
-        "idConsultorio": "15",
+        "idConsultorio": "18",
         "nombreConsultorio": "Consultorio 2"
-    },
-    {
-        "idConsultorio": "16",
-        "nombreConsultorio": "Consultorio 4"
     }
 ]

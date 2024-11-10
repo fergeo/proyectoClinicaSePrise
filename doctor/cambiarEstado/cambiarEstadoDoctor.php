@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/reservaturno.css">
 
     <?php
-        require("inc/cabecera.php");
+        require("../inc/cabecera.php");
         cabecera();
     ?>
 

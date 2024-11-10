@@ -145,7 +145,7 @@
         </table>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/doctor/cambiarEstado/cambiarEstadoDoctor.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/recepcionista/main-recepcionista.php">Volver</a></button> <br><br><br>
         </div>
     </main>
 

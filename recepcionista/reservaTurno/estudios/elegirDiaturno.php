@@ -153,7 +153,7 @@
         </table>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/paciente/reservaTurno/consultorios/elegirTurno.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/recepcionista/reservaTurno/consultorios/elegirTurno.php">Volver</a></button> <br><br><br>
         </div>
     </main>
 

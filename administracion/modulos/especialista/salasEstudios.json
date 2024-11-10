@@ -4,11 +4,7 @@
         "salaEstudioNombre": "Elegir una opci\u00f3n"
     },
     {
-        "idSalaEstudio": "5",
-        "salaEstudioNombre": "Radiografias"
-    },
-    {
-        "idSalaEstudio": "6",
+        "idSalaEstudio": "7",
         "salaEstudioNombre": "Ecografias"
     }
 ]

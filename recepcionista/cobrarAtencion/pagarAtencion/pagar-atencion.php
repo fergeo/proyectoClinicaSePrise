@@ -96,7 +96,7 @@
         </div>
 
         <div class="formulario">
-            <form action="guardar_pagarAtencion_sql.php".$idReservaTurno method="post" class="formulario-insumo">
+            <form action="cambiar_estado_reservaTurno_sql.php".$idReservaTurno method="post" class="formulario-insumo">
                 <div class="inputs">
                     <input type="text" id="idReservaTurno" name="idReservaTurno"  style="display:none;" value=<?php echo $idReservaTurno ?> >
                 </div>  

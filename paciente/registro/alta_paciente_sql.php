@@ -23,13 +23,13 @@
     // Estructura de decisión
     if($existe==1){
         // Modifico el mensaje y volvemos al formulario
-        header("Location: registro.php?mensaje=uno");
+        header("Location: http://localhost/proyectoClinicaSePrise/paciente/registro/regisro.php?mensaje=uno");
     }else{
 
         $alta = "insert into paciente values(NULL,'$nroDoc','$nombre','$apellido','$domicilio','$email','$telefono','$poseeOS')";
         $resultado_alta = mysqli_query($conexion,$alta);
 
         // Redirigimos al usuario
-        header("Location: registro.php");
+        header("Location: http://localhost/proyectoClinicaSePrise/paciente/registro/regisro.php?");
     }
 ?>

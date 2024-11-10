@@ -22,7 +22,7 @@
     // Estructura de decisión
     if($existe==1){
         // Modifico el mensaje y volvemos al formulario
-        header("Location: diaturno.php?mensaje=uno");
+        header("Location: diaturno.php?mensaje=uno&fecha=$fecha");
     }else{
         
         // El usuario no existe, permitimos la carga.
