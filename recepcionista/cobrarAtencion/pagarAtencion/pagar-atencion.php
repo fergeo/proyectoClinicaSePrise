@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Escoger Dia Turno</title>
+    <title>Cobrar Atencion</title>
 
     <?php
         require("../../../inc/conexion.php");
@@ -20,7 +20,7 @@
     <main class="contenedor-principal">
 
         <div class="titulo">
-            <h1 class="title"> Pagar Atencion </h1>
+            <h1 class="title"> Cobrar Atención </h1>
         </div>
 
         <div class="detalle">
@@ -122,7 +122,7 @@
                     </select>
                 </div>
 
-                <button class="btn-pagar" type="submit">Pagar Atención</button>
+                <button class="btn-pagar" type="submit">Cobrar Atención</button>
             </form>
         </div>
     </main>

@@ -3,10 +3,11 @@
     $fecha = $_POST['fechaParam'];
     $dniPaciente = $_POST['dniPaciente'];
 
-    session_start(); // Inicia la sesión
-    $_SESSION['dniPaciente'] = $dniPaciente;
+    echo "<script>alert('DNI: $dniPaciente');</script>";
 
-    //echo "<script>alert('$dniPaciente');</script>";
-    header("Location: diaturno.php?fecha=$fecha&dniPaciemte=$dniPaciemte");
+    //session_start(); // Inicia la sesión
+    //$_SESSION['dniPaciente'] = $dniPaciente;
+
+    header("Location: diaturno.php?fecha=$fecha&dniPaciente=$dniPaciente");
 
 ?>

@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Escoger Dia Turno</title>
+    <title>Agregar Observacion</title>
 
     <?php
 

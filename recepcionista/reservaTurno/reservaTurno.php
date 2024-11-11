@@ -24,7 +24,7 @@
             <button class="btn-historiaClinica"><a href="consultorios/elegirTurno.php">Consultorios Externos</a></button>
             <button class="btn-registrarReserva"><a href="estudios/elegirTurno.php">Estudios</a></button>
             
-            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/paciente/main-paciente.php">Voler</a></button>
+            <button class="btn-registrarReserva"><a href="http://localhost/proyectoClinicaSePrise/recepcionista/main-recepcionista.php">Voler</a></button>
         </div>
         
     </main>

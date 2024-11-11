@@ -11,8 +11,7 @@
         require("../../../inc/conexion.php");
         
         // Sección mensaje.
-        //$fecha = date("d/m/Y");
-        $fecha = '12/11/2024';
+        $fecha = date("d/m/Y");
         
         $mensaje = 'Ingrese los datos';
         if(isset($_GET['mensaje'])){
@@ -74,14 +73,13 @@
                                     reservaturno r,
                                     paciente p,
                                     especialista e,
-                                    consultorio c
+                                    salaestudio s
                                 where (e.consultorioSalaEstudio = 'Sala de Estudios' and espacioEspecialista = idSalaEstudio)
                                         and t.idEspecialista = e.idEspecialista
                                         and r.idTurno = t.idTurno
                                         and r.idPaciente = p.idPaciente
                                         and estado = 'Ingresado'
-                                        and diaTurno = '$fecha'
-                                        and ('$dniPaciente' = 'TODOS' OR numDocumentoPaciente = '$dniPaciente')";
+                                        and diaTurno = '$fecha'";
 
                     //echo "<scrip>alert('$consultaT')</scrip>";                                        
                     $resultadoT = mysqli_query($conexion,$consultaT);
@@ -95,8 +93,8 @@
                             echo "<td>".$fila['nombreEspecialista']." ".$fila['apellidoEspecialista']."</td>";
 
                             // Mostrar los datos
-                            if($fila['espascioConsultorioSala'] == 'Consultorio'){ 
-                                echo "<td>" . $fila['espascioConsultorioSala'] . " - " . $fila['consultorioNombre'] . "</td>"; 
+                            if($fila['espascioConsultorioSala'] == 'Sala de Estudios'){ 
+                                echo "<td>" . $fila['espascioConsultorioSala'] . " - " . $fila['salaEstudioNombre'] . "</td>"; 
                             } 
                             else {
                                 echo "<td>No se encontró el consultorio.</td>";
@@ -118,7 +116,7 @@
         </table>
 
         <div class="volver">
-            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/recepcionista/reservaTurno/estudios/elegirTurno.php">Volver</a></button> <br><br><br>
+            <button class="btn-volver"><a href="http://localhost/proyectoClinicaSePrise/recepcionista/cambiarEstado/cambiarEstado.php">Volver</a></button> <br><br><br>
         </div>
     </main>
 

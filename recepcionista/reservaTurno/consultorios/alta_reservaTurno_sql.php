@@ -7,10 +7,10 @@
     $idTurno = $_GET['idTurno'];
     $costo = $_GET['costo'];
     $fecha = $_GET['fecha'];
-    //$dniPaciente = $_GET['dniPaciente'];
+    $dniPaciente = $_GET['dniPaciente'];
 
     session_start();
-    $dniPaciente = $_SESSION['dniPaciente'];
+    //$dniPaciente = $_SESSION['dniPaciente'];
     //echo "<script>alert('$dniPaciente');</script>";
 
     if ($dniPaciente != ""){

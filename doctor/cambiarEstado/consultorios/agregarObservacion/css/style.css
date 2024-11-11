@@ -1,7 +1,7 @@
 .titulo{
     text-align: center;
     width: 50%;
-    padding-top: 80px;
+    padding-top: 40px;
     font-size: 50px;
     display: inline-block; 
     width: fit-content;
@@ -93,10 +93,11 @@ table{
     text-align: center;
 }
 
-.btn-volver{
-    width: 400px;
-    height: 40px;
-    border-radius: 10px;
+button{
+    width: 200px;
+    height: 50px;
     background-color: blue;
+    border-radius: 5px;
     font-size: 30px;
+    text-decoration: none;
 }
