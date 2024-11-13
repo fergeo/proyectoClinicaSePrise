@@ -12,6 +12,8 @@
         
         // Sección mensaje.
         $fecha = date("d/m/Y");
+
+        echo "<scrip>alert('$fecha')</scrip>";  
         
         $mensaje = 'Ingrese los datos';
         if(isset($_GET['mensaje'])){

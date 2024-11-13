@@ -10,8 +10,8 @@
     <?php
         require("../../../inc/conexion.php");
         
-        // Sección mensaje.
-        $fecha = date("d/m/Y");
+        $date = new DateTime();
+        $fecha = $date->format('d/m/Y');
         
         $mensaje = 'Ingrese los datos';
         if(isset($_GET['mensaje'])){
